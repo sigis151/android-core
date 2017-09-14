@@ -1,0 +1,1 @@
+package com.telesoftas.core.common

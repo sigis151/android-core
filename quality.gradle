@@ -1,0 +1,63 @@
+apply plugin: 'findbugs'
+apply plugin: 'jacoco'
+check.dependsOn 'findbugsXml', 'findbugsHtml'
+
+jacoco {
+    toolVersion = "0.7.7.201606060606"
+    reportsDir = file("$buildDir/reports/jacoco")
+}
+task findbugsXml(type: FindBugs) {
+    group = 'verification'
+    ignoreFailures = true
+    effort = 'max'
+    reportLevel = 'medium'
+    excludeFilter = new File('../config/findbugs/findbugs-filter.xml')
+    classes = files("$project.buildDir/intermediates/classes/")
+    source = files('src/main/kotlin')
+    reports {
+        xml.enabled = true
+        xml.destination = "$project.buildDir/reports/findbugs/findbugs.xml"
+        html.enabled = false
+        html.destination "$project.buildDir/reports/findbugs/findbugs.html"
+    }
+    classpath = files()
+}
+task findbugsHtml(type: FindBugs) {
+    group = 'verification'
+    ignoreFailures = true
+    effort = 'max'
+    reportLevel = 'medium'
+    excludeFilter = new File('../config/findbugs/findbugs-filter.xml')
+    classes = files("$project.buildDir/intermediates/classes/")
+    source = files('src/main/kotlin')
+    reports {
+        xml.enabled = false
+        xml.destination = "$project.buildDir/reports/findbugs/findbugs.xml"
+        html.enabled = true
+        html.destination "$project.buildDir/reports/findbugs/findbugs.html"
+    }
+    classpath = files()
+}
+android.buildTypes.all { buildType ->
+    task("${buildType.name}JacocoReport", type: JacocoReport,
+            dependsOn: "test${buildType.name.capitalize()}UnitTest") {
+        group = "verification"
+        classDirectories = fileTree(
+                dir: "${project.buildDir}/intermediates/classes/${buildType.name}/",
+                excludes: ['']
+        )
+        sourceDirectories = files("src/main/kotlin", "src/${buildType.name}/kotlin", "src/test/kotlin")
+        executionData =
+                files("${project.buildDir}/jacoco/test${buildType.name.capitalize()}UnitTest.exec")
+        reports {
+            xml.enabled true
+            html.enabled true
+            html.destination "${buildDir}/reports/jacoco"
+        }
+    }
+}
+// The built-in jacoco plugin automatically applies itself to all Test tasks
+tasks.withType(Test).whenTaskAdded {
+    it.jacoco.append = true
+    it.jacoco.classDumpFile = file("$project.buildDir/jacoco/dump")
+}

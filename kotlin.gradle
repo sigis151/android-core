@@ -1,0 +1,8 @@
+android {
+    sourceSets.all { sourceSet ->
+        sourceSet.java.srcDirs += 'src/' + sourceSet.name + '/kotlin'
+    }
+}
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
