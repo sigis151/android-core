@@ -64,7 +64,9 @@ node {
                   + '**/*ItemDecorator$*, **/*ItemDecoration$*, '
                   // Kotlin specific
                   + '**/*ViewExtensionKt.*, **/*ContextExtensionKt.*, **/*ActivityExtensionKt.*, '
-                  + '**/*ExtensionKt*, **/*Companion$CREATOR*, **/*Companion$EMPTY*',
+                  + '**/*ExtensionKt*, **/*Companion$CREATOR*, **/*Companion$EMPTY*, '
+                  // Project specific
+                  + '**/*PermissionRequester*',
           execPattern     : '**/build/jacoco/**.exec',
           inclusionPattern: '**/*.class'])
 }
