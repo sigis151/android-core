@@ -4,9 +4,20 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 
 class SampleViewHolder(
-        itemView: View
+        itemView: View,
+        private val listener: Listener
 ) : RecyclerView.ViewHolder(itemView) {
+    private var sample = Sample.empty()
+
+    init {
+        itemView.setOnClickListener { listener.onItemSelected(sample, adapterPosition) }
+    }
+
     fun bind(sample: Sample) {
-        // Do nothing
+        this.sample = sample
+    }
+
+    interface Listener {
+        fun onItemSelected(item: Sample, adapterPosition: Int)
     }
 }
