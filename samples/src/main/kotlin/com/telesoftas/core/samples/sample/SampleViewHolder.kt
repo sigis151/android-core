@@ -17,6 +17,7 @@ class SampleViewHolder(
     fun bind(sample: Sample) {
         this.sample = sample
         itemView.nameTextView.text = sample.nameText
+        itemView.descriptionTextView.text = sample.descriptionText
     }
 
     interface Listener {
