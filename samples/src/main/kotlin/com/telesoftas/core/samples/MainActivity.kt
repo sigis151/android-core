@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     private fun createSampleViewHolderListener(): SampleViewHolder.Listener {
         return object : SampleViewHolder.Listener {
             override fun onItemSelected(item: Sample, adapterPosition: Int) {
-                // Do nothing
+                item.showSampleScreen(this@MainActivity)
             }
         }
     }
