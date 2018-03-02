@@ -59,7 +59,7 @@ private fun <V : Activity> attachToActivity(presenter: Presenter<V>, view: V) {
 
 private fun <V : Fragment> attachToFragment(presenter: Presenter<V>, view: V) {
     val fragmentManager = view.fragmentManager
-    fragmentManager.registerFragmentLifecycleCallbacks(
+    fragmentManager?.registerFragmentLifecycleCallbacks(
             object : FragmentManager.FragmentLifecycleCallbacks() {
                 override fun onFragmentCreated(
                         manager: FragmentManager,

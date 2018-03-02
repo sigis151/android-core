@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment
 @Suppress("unused")
 class FragmentPermissionRequester(private val fragment: Fragment) : PermissionRequester {
     override fun isPermissionGranted(permission: String): Boolean {
-        val selfPermission = ActivityCompat.checkSelfPermission(fragment.context, permission)
+        val selfPermission = ActivityCompat.checkSelfPermission(fragment.context!!, permission)
         return selfPermission == PackageManager.PERMISSION_GRANTED
     }
 

@@ -10,14 +10,14 @@ class SampleAdapter(
 ) : RecyclerView.Adapter<SampleViewHolder>() {
     private val items = mutableListOf<Sample>()
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SampleViewHolder {
-        val inflater = LayoutInflater.from(parent?.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SampleViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
         val itemView = inflater.inflate(R.layout.item_sample, parent, false)
         return SampleViewHolder(itemView, listener)
     }
 
-    override fun onBindViewHolder(holder: SampleViewHolder?, position: Int) {
-        holder?.bind(items[position])
+    override fun onBindViewHolder(holder: SampleViewHolder, position: Int) {
+        holder.bind(items[position])
     }
 
     override fun getItemCount(): Int = items.size

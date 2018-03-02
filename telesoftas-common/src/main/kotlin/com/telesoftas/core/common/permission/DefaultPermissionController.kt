@@ -17,7 +17,7 @@ class DefaultPermissionController(private val requester: PermissionRequester)
             listener: PermissionListener
     ) {
         grantPermissionOrInvokeAction(permission, listener) {
-            requests.put(requestCode, listener)
+            requests[requestCode] = listener
             requester.requestPermission(arrayOf(permission), requestCode)
         }
     }
@@ -31,7 +31,7 @@ class DefaultPermissionController(private val requester: PermissionRequester)
             if (shouldExplain(permission)) {
                 listener.onRationaleRequest(permission)
             } else {
-                requests.put(requestCode, listener)
+                requests[requestCode] = listener
                 requester.requestPermission(arrayOf(permission), requestCode)
             }
         }
