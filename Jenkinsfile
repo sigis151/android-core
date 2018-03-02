@@ -66,6 +66,7 @@ node {
                   + '**/*ViewExtensionKt.*, **/*ContextExtensionKt.*, **/*ActivityExtensionKt.*, '
                   + '**/*ExtensionKt*, **/*Companion$CREATOR*, **/*Companion$EMPTY*, '
                   // Project specific
+                  + '**/*PermissionRequester*, '
                   + '**/*ModalProgressView*, ',
           execPattern     : '**/build/jacoco/**.exec',
           inclusionPattern: '**/*.class'])
