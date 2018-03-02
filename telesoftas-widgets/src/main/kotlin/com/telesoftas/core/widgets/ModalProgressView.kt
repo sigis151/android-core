@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.PorterDuff
 import android.os.Handler
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
@@ -53,7 +54,8 @@ class ModalProgressView : FrameLayout, ProgressViewController {
 
     private fun retrieveProgressColor(typedArray: TypedArray): Int {
         val styleable = R.styleable.ModalProgressView_progressBarColor
-        return typedArray.getColor(styleable, DEFAULT_PROGRESS_COLOR)
+        val defaultColor = ContextCompat.getColor(context, DEFAULT_PROGRESS_COLOR)
+        return typedArray.getColor(styleable, defaultColor)
     }
 
     private fun retrieveProgressLayout(typedArray: TypedArray): Int {
@@ -97,8 +99,9 @@ class ModalProgressView : FrameLayout, ProgressViewController {
     }
 
     private fun applyProgressBarTheme() {
+        val color = ContextCompat.getColor(context, progressColor)
         modalProgressLayout.findViewById<ProgressBar>(R.id.progressBar)
-                .indeterminateDrawable.setColorFilter(progressColor, PorterDuff.Mode.SRC_ATOP)
+                .indeterminateDrawable.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
     }
 
     override fun showProgress() {
