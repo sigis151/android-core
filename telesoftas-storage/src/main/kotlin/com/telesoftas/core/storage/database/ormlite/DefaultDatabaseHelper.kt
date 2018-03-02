@@ -8,11 +8,13 @@ import com.j256.ormlite.support.ConnectionSource
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.Single
+import timber.log.Timber
 import java.sql.SQLException
 
 class DefaultDatabaseHelper(
         context: Context,
-        private val singleThreadScheduler: Scheduler
+        private val singleThreadScheduler: Scheduler,
+        private val tableInitializer: List<TableInitializer>
 ) : OrmLiteSqliteOpenHelper(
         context,
         DATABASE_NAME,
@@ -20,7 +22,15 @@ class DefaultDatabaseHelper(
         DATABASE_VERSION
 ), DatabaseHelper {
     override fun onCreate(database: SQLiteDatabase, connectionSource: ConnectionSource) {
-        // EMPTY
+        try {
+            initializeDatabase(connectionSource)
+        } catch (cause: SQLException) {
+            Timber.e(cause, "Database error while creating table")
+        }
+    }
+
+    private fun initializeDatabase(connectionSource: ConnectionSource) {
+        tableInitializer.forEach { initializer -> initializer.createTable(connectionSource) }
     }
 
     override fun onUpgrade(
