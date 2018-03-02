@@ -4,7 +4,7 @@ import com.telesoftas.core.storage.RxStorage
 import io.reactivex.Completable
 import io.reactivex.Single
 
-class RxPreferencesStorage<T>(
+open class RxPreferencesStorage<T>(
         private val storage: PreferencesStorage<T>
 ) : RxStorage<T> {
     override fun put(item: T): Completable = Completable.fromAction { storage.put(item) }
