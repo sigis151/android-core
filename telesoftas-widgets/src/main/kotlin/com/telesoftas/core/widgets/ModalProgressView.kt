@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Handler
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewCompat
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
@@ -104,7 +105,17 @@ class ModalProgressView : FrameLayout, ProgressViewController {
                 .indeterminateDrawable.setColorFilter(progressColor, PorterDuff.Mode.SRC_ATOP)
     }
 
+    private fun applyHighestElevationToModalProgress() {
+        ViewCompat.setElevation(modalProgressLayout, findHighestElevation() + 1f)
+    }
+
+    private fun findHighestElevation(): Float =
+            ViewCompat.getElevation((childCount - 1).downTo(0)
+                    .map { index -> getChildAt(index) }
+                    .maxBy { view -> ViewCompat.getElevation(view) })
+
     override fun showProgress() {
+        applyHighestElevationToModalProgress()
         actionDelayer.delay { progressAnimator.showProgress() }
     }
 
