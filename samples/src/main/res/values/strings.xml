@@ -2,4 +2,6 @@
     <string name="app_name">Samples</string>
 
     <string name="button_launch">Launch!</string>
+
+    <string name="checkbox_show_progress_delay">Show progress delay</string>
 </resources>

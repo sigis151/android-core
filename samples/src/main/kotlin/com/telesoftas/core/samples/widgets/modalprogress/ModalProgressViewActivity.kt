@@ -11,7 +11,19 @@ class ModalProgressViewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modal_progress)
-        launchButton.setOnClickListener { modalProgressView.showProgress() }
+        launchButton.setOnClickListener {
+            applyConfig()
+            modalProgressView.showProgress()
+        }
+        setUpInitialConfigState()
+    }
+
+    private fun setUpInitialConfigState() {
+        delayCheckBox.isChecked = modalProgressView.showProgressDelay
+    }
+
+    private fun applyConfig() {
+        modalProgressView.showProgressDelay = delayCheckBox.isChecked
     }
 
     companion object {
