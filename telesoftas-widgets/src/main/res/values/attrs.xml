@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ProgressView">
+        <attr name="progressBarColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="ModalProgressView" parent="ProgressView">
+        <attr name="progressBarColor"/>
+        <attr name="progressLayout" format="reference"/>
+        <attr name="showProgressDelay" format="boolean"/>
+        <attr name="progressDelay" format="integer"/>
+        <attr name="progressAnimationDuration" format="integer"/>
+    </declare-styleable>
+</resources>
