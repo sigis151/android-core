@@ -32,8 +32,8 @@ class RxOrmLiteDatabaseStorageTest {
     fun putItems_sameItemsExist_storageDoesNotOverwriteItems() {
         val firstValues = listOf(TestEntity(1, "2"), TestEntity(2, "3"))
         val secondValues = listOf(TestEntity(1, "1"), TestEntity(2, "2"))
-        storageOrmLite.putItems(firstValues).test().assertComplete()
-        storageOrmLite.putItems(secondValues).test().assertComplete()
+        storageOrmLite.putItems(firstValues).test()
+        storageOrmLite.putItems(secondValues).test()
 
         val observer = storageOrmLite.getItems().test()
 
@@ -71,8 +71,8 @@ class RxOrmLiteDatabaseStorageTest {
     fun updateItems_sameItemsExist_storageAlwaysOverwritesItems() {
         val firstValues = listOf(TestEntity(1, "2"), TestEntity(2, "3"))
         val secondValues = listOf(TestEntity(1, "1"), TestEntity(2, "2"))
-        storageOrmLite.updateItems(firstValues).test().assertComplete()
-        storageOrmLite.updateItems(secondValues).test().assertComplete()
+        storageOrmLite.updateItems(firstValues).test()
+        storageOrmLite.updateItems(secondValues).test()
 
         val observer = storageOrmLite.getItems().test()
 
