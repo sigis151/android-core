@@ -14,7 +14,7 @@ import java.sql.SQLException
 class DefaultDatabaseHelper(
         context: Context,
         private val singleThreadScheduler: Scheduler,
-        private val tableInitializer: List<TableInitializer>
+        private val databaseTableModel: List<DatabaseTableModel>
 ) : OrmLiteSqliteOpenHelper(
         context,
         DATABASE_NAME,
@@ -30,7 +30,7 @@ class DefaultDatabaseHelper(
     }
 
     private fun initializeDatabase(connectionSource: ConnectionSource) {
-        tableInitializer.forEach { initializer -> initializer.createTable(connectionSource) }
+        databaseTableModel.forEach { initializer -> initializer.createTable(connectionSource) }
     }
 
     override fun onUpgrade(
