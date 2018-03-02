@@ -9,4 +9,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
 
     implementation "com.jakewharton.timber:timber:$timber_version"
+
+    api "com.j256.ormlite:ormlite-core:$orm_lite_version"
+    api "com.j256.ormlite:ormlite-android:$orm_lite_version"
 }
