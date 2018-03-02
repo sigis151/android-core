@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.TextView
 import com.telesoftas.core.samples.R
 import kotlinx.android.synthetic.main.activity_modal_progress.*
 
@@ -20,10 +21,12 @@ class ModalProgressViewActivity : AppCompatActivity() {
 
     private fun setUpInitialConfigState() {
         delayCheckBox.isChecked = modalProgressView.showProgressDelay
+        (delayTimeEditText as TextView).text = modalProgressView.progressDelay.toString()
     }
 
     private fun applyConfig() {
         modalProgressView.showProgressDelay = delayCheckBox.isChecked
+        modalProgressView.progressDelay = delayTimeEditText.text.toString().toLong()
     }
 
     companion object {
