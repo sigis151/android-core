@@ -4,5 +4,5 @@ apply plugin: 'kotlin-android-extensions'
 apply from: '../blaster.gradle'
 
 dependencies {
-    compile "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:appcompat-v7:$support_version"
 }
