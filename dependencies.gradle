@@ -2,6 +2,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile "org.mockito:mockito-core:$mockito_version"
     testCompile "org.mockito:mockito-inline:$mockito_version"
-    testCompile "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
+    testCompile("com.nhaarman:mockito-kotlin:$mockito_kotlin_version") {
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib'
+    }
     testCompile "junit:junit:$junit_version"
 }
