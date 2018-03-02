@@ -14,7 +14,7 @@ import java.sql.SQLException
 class DefaultDatabaseHelper(
         context: Context,
         private val singleThreadScheduler: Scheduler,
-        private val databaseTableModel: List<DatabaseTableModel>
+        private val databaseTableModels: List<DatabaseTableModel>
 ) : OrmLiteSqliteOpenHelper(
         context,
         DATABASE_NAME,
@@ -29,17 +29,22 @@ class DefaultDatabaseHelper(
         }
     }
 
-    private fun initializeDatabase(connectionSource: ConnectionSource) {
-        databaseTableModel.forEach { initializer -> initializer.createTable(connectionSource) }
-    }
-
     override fun onUpgrade(
             database: SQLiteDatabase,
             connectionSource: ConnectionSource,
             oldVersion: Int,
             newVersion: Int
     ) {
-        // EMPTY
+        performDestructiveMigration()
+    }
+
+    private fun performDestructiveMigration() {
+        databaseTableModels.forEach { initializer -> initializer.dropTable(connectionSource) }
+        initializeDatabase(connectionSource)
+    }
+
+    private fun initializeDatabase(connectionSource: ConnectionSource) {
+        databaseTableModels.forEach { initializer -> initializer.createTable(connectionSource) }
     }
 
     @Throws(SQLException::class)

@@ -4,4 +4,6 @@ import com.j256.ormlite.support.ConnectionSource
 
 interface DatabaseTableModel {
     fun createTable(connectionSource: ConnectionSource)
+
+    fun dropTable(connectionSource: ConnectionSource)
 }
