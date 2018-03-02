@@ -5,6 +5,8 @@ apply from: '../blaster.gradle'
 
 dependencies {
     compile "com.google.code.gson:gson:$gson_version"
+    compile "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    compile "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
 
     compile "com.jakewharton.timber:timber:$timber_version"
 }
