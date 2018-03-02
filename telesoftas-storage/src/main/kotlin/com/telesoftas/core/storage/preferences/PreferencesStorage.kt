@@ -1,5 +1,6 @@
-package com.telesoftas.core.storage
+package com.telesoftas.core.storage.preferences
 
+import com.telesoftas.core.storage.Storage
 import com.telesoftas.core.storage.preferences.manager.PreferenceManager
 
 open class PreferencesStorage<T>(

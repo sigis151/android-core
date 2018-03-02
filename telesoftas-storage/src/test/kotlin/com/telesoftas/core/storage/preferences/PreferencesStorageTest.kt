@@ -1,4 +1,4 @@
-package com.telesoftas.core.storage
+package com.telesoftas.core.storage.preferences
 
 import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.mock
