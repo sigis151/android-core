@@ -2,7 +2,6 @@ package com.telesoftas.core.storage.preferences.manager
 
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import timber.log.Timber
 
 class DefaultPreferenceManager(
         private val prefs: SharedPreferences,
@@ -24,7 +23,6 @@ class DefaultPreferenceManager(
     }
 
     override fun <T> put(key: String, value: T) {
-        Timber.d("Put serialized value:\n$value")
         val serializedValue = gson.toJson(value)
         prefsEditor.putString(key, serializedValue).apply()
     }
