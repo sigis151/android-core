@@ -1,1 +1,1 @@
-include ':telesoftas-common', ':telesoftas-widgets', ':samples'
+include ':telesoftas-common', ':telesoftas-widgets', ':telesoftas-storage', ':samples'
