@@ -10,6 +10,6 @@ class ModalProgressViewSample : Sample {
     override val imageDrawableRes: Int = R.mipmap.ic_launcher
 
     override fun showSampleScreen(activity: AppCompatActivity) {
-        // Do nothing
+        ModalProgressViewActivity.start(activity)
     }
 }
