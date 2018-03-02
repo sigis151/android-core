@@ -4,5 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply from: '../blaster.gradle'
 
 dependencies {
+    compile "com.google.code.gson:gson:$gson_version"
+
     compile "com.jakewharton.timber:timber:$timber_version"
 }
