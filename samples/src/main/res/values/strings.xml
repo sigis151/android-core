@@ -3,7 +3,7 @@
 
     <string name="button_launch">Launch!</string>
 
-    <string name="checkbox_show_progress_delay">Show progress delay</string>
+    <string name="checkbox_show_progress_delay">Show progress delay:</string>
 
     <string name="label_show_progress_delay_time">Progress delay time:</string>
 </resources>
