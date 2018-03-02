@@ -2,6 +2,7 @@ package com.telesoftas.core.widgets
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Handler
 import android.support.v4.content.ContextCompat
@@ -54,7 +55,7 @@ class ModalProgressView : FrameLayout, ProgressViewController {
 
     private fun retrieveProgressColor(typedArray: TypedArray): Int {
         val styleable = R.styleable.ModalProgressView_progressBarColor
-        val defaultColor = ContextCompat.getColor(context, DEFAULT_PROGRESS_COLOR)
+        val defaultColor = ContextCompat.getColor(context, android.R.color.white)
         return typedArray.getColor(styleable, defaultColor)
     }
 
@@ -99,9 +100,8 @@ class ModalProgressView : FrameLayout, ProgressViewController {
     }
 
     private fun applyProgressBarTheme() {
-        val color = ContextCompat.getColor(context, progressColor)
         modalProgressLayout.findViewById<ProgressBar>(R.id.progressBar)
-                .indeterminateDrawable.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+                .indeterminateDrawable.setColorFilter(progressColor, PorterDuff.Mode.SRC_ATOP)
     }
 
     override fun showProgress() {
@@ -116,7 +116,7 @@ class ModalProgressView : FrameLayout, ProgressViewController {
         private const val DEFAULT_DELAY_TIME = 150L
         private const val DEFAULT_ANIMATION_DURATION = 150L
         private const val DEFAULT_SHOW_PROGRESS_DELAY = true
-        private const val DEFAULT_PROGRESS_COLOR = android.R.color.white
+        private const val DEFAULT_PROGRESS_COLOR = Color.WHITE
         private val DEFAULT_PROGRESS_LAYOUT = R.layout.layout_default_progress
     }
 }
