@@ -22,11 +22,14 @@ class ModalProgressViewActivity : AppCompatActivity() {
     private fun setUpInitialConfigState() {
         delayCheckBox.isChecked = modalProgressView.showProgressDelay
         (delayTimeEditText as TextView).text = modalProgressView.progressDelay.toString()
+        (animationTimeEditText as TextView).text =
+                modalProgressView.progressAnimationDuration.toString()
     }
 
     private fun applyConfig() {
         modalProgressView.showProgressDelay = delayCheckBox.isChecked
         modalProgressView.progressDelay = delayTimeEditText.text.toString().toLong()
+        modalProgressView.progressAnimationDuration = animationTimeEditText.text.toString().toLong()
     }
 
     companion object {
