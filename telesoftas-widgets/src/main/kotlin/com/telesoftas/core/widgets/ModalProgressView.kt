@@ -20,11 +20,11 @@ import kotlinx.android.synthetic.main.layout_progress_bar_modal.view.*
 class ModalProgressView : FrameLayout, ProgressViewController {
     private val actionDelayer = ActionDelayer(Handler(), DEFAULT_DELAY_TIME)
     private val progressAnimator = AlphaAnimator()
-    private var progressColor: Int = DEFAULT_PROGRESS_COLOR
-    private var progressLayout: Int = DEFAULT_PROGRESS_LAYOUT
-    private var showProgressDelay: Boolean = DEFAULT_SHOW_PROGRESS_DELAY
-    private var progressAnimationDuration = DEFAULT_ANIMATION_DURATION
-    private var progressDelay = DEFAULT_DELAY_TIME
+    var progressColor: Int = DEFAULT_PROGRESS_COLOR
+    var progressLayout: Int = DEFAULT_PROGRESS_LAYOUT
+    var showProgressDelay: Boolean = DEFAULT_SHOW_PROGRESS_DELAY
+    var progressAnimationDuration = DEFAULT_ANIMATION_DURATION
+    var progressDelay = DEFAULT_DELAY_TIME
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initView(attrs)
