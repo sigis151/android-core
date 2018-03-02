@@ -12,4 +12,6 @@ dependencies {
 
     api "com.j256.ormlite:ormlite-core:$orm_lite_version"
     api "com.j256.ormlite:ormlite-android:$orm_lite_version"
+
+    testImplementation "org.robolectric:robolectric:$robolectric_version"
 }

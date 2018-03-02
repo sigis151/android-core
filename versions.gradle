@@ -12,6 +12,7 @@ ext {
     gson_version = "2.8.2"
     location_services_version = "11.8.0"
     orm_lite_version = "5.0"
+    robolectric_version = "3.4"
 }
 
 project.ext {

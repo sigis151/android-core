@@ -13,13 +13,14 @@ import java.sql.SQLException
 
 class DefaultDatabaseHelper(
         context: Context,
+        databaseConfig: DatabaseConfiguration,
         private val singleThreadScheduler: Scheduler,
         private val databaseTableModels: List<DatabaseTableModel>
 ) : OrmLiteSqliteOpenHelper(
         context,
-        DATABASE_NAME,
-        null,
-        DATABASE_VERSION
+        databaseConfig.databaseName,
+        databaseConfig.cursorFactory,
+        databaseConfig.databaseVersion
 ), DatabaseHelper {
     override fun onCreate(database: SQLiteDatabase, connectionSource: ConnectionSource) {
         try {
@@ -69,10 +70,5 @@ class DefaultDatabaseHelper(
             TransactionManager.callInTransaction(getConnectionSource(), action)
         }
         return completable.subscribeOn(singleThreadScheduler)
-    }
-
-    companion object {
-        private const val DATABASE_VERSION = 1
-        private const val DATABASE_NAME = "main.db"
     }
 }
