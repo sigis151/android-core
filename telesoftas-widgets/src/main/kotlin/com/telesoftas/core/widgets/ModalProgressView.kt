@@ -20,11 +20,27 @@ import kotlinx.android.synthetic.main.layout_progress_bar_modal.view.*
 class ModalProgressView : FrameLayout, ProgressViewController {
     private val actionDelayer = ActionDelayer(Handler(), DEFAULT_DELAY_TIME)
     private val progressAnimator = AlphaAnimator()
-    var progressColor: Int = DEFAULT_PROGRESS_COLOR
     var progressLayout: Int = DEFAULT_PROGRESS_LAYOUT
+    var progressColor: Int = DEFAULT_PROGRESS_COLOR
+        set(value) {
+            field = value
+            applyProgressBarTheme()
+        }
     var showProgressDelay: Boolean = DEFAULT_SHOW_PROGRESS_DELAY
+        set(value) {
+            field = value
+            setUpProgressDelay()
+        }
     var progressAnimationDuration = DEFAULT_ANIMATION_DURATION
+        set(value) {
+            field = value
+            setUpProgressAnimationDuration()
+        }
     var progressDelay = DEFAULT_DELAY_TIME
+        set(value) {
+            field = value
+            setUpProgressDelay()
+        }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initView(attrs)
@@ -101,8 +117,9 @@ class ModalProgressView : FrameLayout, ProgressViewController {
     }
 
     private fun applyProgressBarTheme() {
-        modalProgressLayout.findViewById<ProgressBar>(R.id.progressBar)
-                .indeterminateDrawable.setColorFilter(progressColor, PorterDuff.Mode.SRC_ATOP)
+        val progressBar = modalProgressLayout?.findViewById<ProgressBar>(R.id.progressBar)
+        progressBar?.indeterminateDrawable?.setColorFilter(progressColor, PorterDuff.Mode.SRC_ATOP)
+        progressBar?.invalidate()
     }
 
     private fun applyHighestElevationToModalProgress() {

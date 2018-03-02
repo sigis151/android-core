@@ -5,9 +5,11 @@ import android.view.View
 
 class AlphaAnimator {
     private var view: View? = null
+    private var duration: Long = 150
     private val animator: ValueAnimator
         get() {
             val animator = ValueAnimator.ofFloat(0f, 1f)
+            animator.duration = duration
             animator.addUpdateListener { valueAnimator ->
                 val animatedValue = valueAnimator.animatedValue as Float
                 view?.alpha = animatedValue
@@ -30,7 +32,7 @@ class AlphaAnimator {
     }
 
     fun setDuration(duration: Long) {
-        animator.duration = duration
+        this.duration = duration
     }
 
     fun setTarget(view: View) {
