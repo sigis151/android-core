@@ -5,13 +5,16 @@ import android.support.v7.app.AppCompatActivity
 import com.telesoftas.core.samples.sample.Sample
 import com.telesoftas.core.samples.sample.SampleAdapter
 import com.telesoftas.core.samples.sample.SampleViewHolder
+import com.telesoftas.core.samples.widgets.modalprogress.ModalProgressViewSample
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setUpRecyclerView(listOf())
+        setUpRecyclerView(listOf(
+                ModalProgressViewSample()
+        ))
     }
 
     private fun setUpRecyclerView(items: List<Sample>) {
