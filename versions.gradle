@@ -5,7 +5,7 @@ ext {
     rxandroid_version = "2.0.2"
     retrofit_version = "2.3.0"
     okhttp_version = "3.10.0"
-    timber_version = "4.5.1"
+    timber_version = "4.6.1"
     mockito_version = "2.10.0"
     mockito_kotlin_version = "1.5.0"
     junit_version = "4.12"
