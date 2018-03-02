@@ -3,7 +3,7 @@ package com.telesoftas.core.storage
 import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
-import com.telesoftas.core.storage.preferences.PreferenceManager
+import com.telesoftas.core.storage.preferences.manager.PreferenceManager
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

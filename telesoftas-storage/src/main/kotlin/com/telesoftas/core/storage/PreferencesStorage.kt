@@ -1,6 +1,6 @@
 package com.telesoftas.core.storage
 
-import com.telesoftas.core.storage.preferences.PreferenceManager
+import com.telesoftas.core.storage.preferences.manager.PreferenceManager
 
 open class PreferencesStorage<T>(
         private val preferenceManager: PreferenceManager,

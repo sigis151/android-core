@@ -1,4 +1,4 @@
-package com.telesoftas.core.storage.preferences
+package com.telesoftas.core.storage.preferences.manager
 
 interface PreferenceManager {
     fun put(key: String, value: Boolean)

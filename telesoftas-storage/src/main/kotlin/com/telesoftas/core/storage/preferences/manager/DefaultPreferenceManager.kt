@@ -1,4 +1,4 @@
-package com.telesoftas.core.storage.preferences
+package com.telesoftas.core.storage.preferences.manager
 
 import android.content.SharedPreferences
 import com.google.gson.Gson
