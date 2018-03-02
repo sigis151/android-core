@@ -5,11 +5,14 @@ import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
 import com.jaredrummler.android.colorpicker.ColorPickerDialog
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener
 import com.telesoftas.core.samples.R
 import kotlinx.android.synthetic.main.activity_modal_progress.*
+
 
 class ModalProgressViewActivity : AppCompatActivity(), ColorPickerDialogListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +27,19 @@ class ModalProgressViewActivity : AppCompatActivity(), ColorPickerDialogListener
                     .show(this);
         }
         setUpInitialConfigState()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_modal_progress, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == R.id.action_refresh) {
+            modalProgressView.hideProgress()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setUpInitialConfigState() {

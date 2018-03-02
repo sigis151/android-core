@@ -8,4 +8,5 @@
     <string name="label_show_progress_delay_time">Progress delay time:</string>
     <string name="label_progress_animation_time">Progress animation time:</string>
     <string name="label_pick_color">Pick color:</string>
+    <string name="label_refresh">Refresh</string>
 </resources>
