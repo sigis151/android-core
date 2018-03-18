@@ -66,6 +66,7 @@ node {
                   + '**/*ViewExtensionKt.*, **/*ContextExtensionKt.*, **/*ActivityExtensionKt.*, '
                   + '**/*ExtensionKt*, **/*Companion$CREATOR*, **/*Companion$EMPTY*, '
                   // Project specific
+                  + '**/*IntentFactory*, '
                   + '**/*PermissionRequester*',
           execPattern     : '**/build/jacoco/**.exec',
           inclusionPattern: '**/*.class'])
