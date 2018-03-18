@@ -25,3 +25,15 @@ class PhoneDialIntentFactory : IntentFactory<PhoneDialData> {
         return Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null))
     }
 }
+
+fun Context.createPhoneDialIntent(
+        phone: String,
+        phonePrefix: String = "",
+        phoneSuffix: String = ""
+): Intent = PhoneDialIntentFactory().createIntent(
+        context = this,
+        data = PhoneDialData(
+                phone = phone,
+                phonePrefix = phonePrefix,
+                phoneSuffix = phoneSuffix
+        ))
