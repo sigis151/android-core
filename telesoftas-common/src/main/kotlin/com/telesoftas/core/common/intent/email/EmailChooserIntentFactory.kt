@@ -26,3 +26,17 @@ class EmailChooserIntentFactory : IntentFactory<EmailChooserData> {
         return Intent.createChooser(intent, title)
     }
 }
+
+fun Context.createEmailIntent(
+        email: String,
+        chooserTitle: String,
+        emailPrefix: String = "",
+        emailSuffix: String = ""
+): Intent = EmailChooserIntentFactory().createIntent(
+        context = this,
+        data = EmailChooserData(
+                email = email,
+                chooserTitle = chooserTitle,
+                emailPrefix = emailPrefix,
+                emailSuffix = emailSuffix
+        ))
