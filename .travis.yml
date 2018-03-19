@@ -7,7 +7,8 @@ android:
     - build-tools-26.0.3
     - android-27
     - extra-android-m2repository
-
+before_install:
+ - chmod +x gradlew
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
